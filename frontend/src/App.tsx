@@ -1,9 +1,8 @@
+import "./index.css";
+import { Routes } from "./routes";
+
 const App = () => {
-  return (
-    <div className="App">
-      
-    </div>
-  );
-}
+  return <Routes />;
+};
 
 export default App;
