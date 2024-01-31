@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { UserService } from "../services/api/user/UserService";
-import { ApiException } from "../services/api/ApiException";
+import { UserService } from "../../services/api/user/UserService";
+import { ApiException } from "../../services/api/ApiException";
 import { useNavigate } from "react-router-dom";
 
 

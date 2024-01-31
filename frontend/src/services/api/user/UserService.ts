@@ -3,7 +3,7 @@ import { Api } from "../ApiConfig";
 
 export interface User {
   id: number;
-  name: string;
+  firstName: string;
   email: string;
 }
 
@@ -20,7 +20,7 @@ const create = async (
 
 const getById = async (id: number): Promise<User | ApiException> => {
   try {
-    const { data } = await Api().get(`/user/$(id)`);
+    const { data } = await Api().get(`/user/${id}`);
     return data;
   } catch (error: any) {
     return new ApiException(error.message || "Error consulting API");
@@ -29,10 +29,10 @@ const getById = async (id: number): Promise<User | ApiException> => {
 
 const updateById = async (
   id: number,
-  dataToUpdate: User,
+  dataToUpdate: Partial<User>,
 ): Promise<User | ApiException> => {
   try {
-    const { data } = await Api().put(`/user/$(id)`, dataToUpdate);
+    const { data } = await Api().put(`/user/${id}`, {user: dataToUpdate } );
     return data;
   } catch (error: any) {
     return new ApiException(error.message || "Error consulting API");
