@@ -18,6 +18,12 @@ class UserService {
     })
   }
 
+  static async getAll (): Promise<User[]> {
+    return await prismaClient.user.findMany({
+      include: { permissions: true }
+    })
+  }
+
   static async get (userId: number): Promise<User> {
     const user = await prismaClient.user.findUnique({
       where: { id: userId },

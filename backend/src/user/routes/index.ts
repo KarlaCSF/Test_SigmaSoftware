@@ -13,6 +13,12 @@ const router = (app: Express): Express => {
     })
   })
 
+  app.get('/user', async (_request, response) => {
+    const users: User[] = await UserService.getAll()
+
+    response.send(users)
+  })
+
   app.get('/user/:id', async (request, response) => {
     const userId = Number(request.params.id)
     const user = await UserService.get(userId)
