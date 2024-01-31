@@ -5,6 +5,7 @@ export interface IUser {
   id: number;
   firstName: string;
   email: string;
+  permissions: { name:string, id: string}[]
 }
 
 const create = async (

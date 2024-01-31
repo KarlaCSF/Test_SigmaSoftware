@@ -1,30 +1,35 @@
 import { useContext, useEffect, useState } from "react"
 import { InputForm } from "./components/InputForm"
 import { Button } from "../shared/components/Button"
-import { UserService } from "../shared/services/api/user/UserService"
+import { IUser, UserService } from "../shared/services/api/user/UserService"
 import { ApiException } from "../shared/services/api/ApiException"
 import { UserContext } from "../shared/contexts/UserContext"
+import { useNavigate } from "react-router-dom"
 
 export const Form = () => {
-  const [firstName, setFirstName] = useState('')
-  const [email, setEmail] = useState('')
-
+  const [user, setUser] = useState({} as IUser)
   const { userId } = useContext(UserContext)
 
+  const navigate = useNavigate()
+
   useEffect(() => {
+    if (!userId) {
+      navigate('/home')
+      return
+    }
+
     UserService.getById(userId)
     .then((result) => {
       if (result instanceof ApiException) {
         alert(result.message)
       } else {
-        setFirstName(result.firstName)
-        setEmail(result.email)
+        setUser(result)
       }
     })
-  }, [userId])
+  }, [])
   
   const handleContinue = () => {
-    UserService.updateById(userId, { firstName, email })
+    UserService.updateById(userId, { ...user })
     .then((result) => {
       if (result instanceof ApiException) {
         alert(result.message)
@@ -33,20 +38,37 @@ export const Form = () => {
       }
     })
   }
+  
+  const hasSomePermission = (permissionsExpec: string[]) => {
+    const userPermissions = user.permissions?.map((permission) => permission.name) ?? []
+ 
+    return permissionsExpec.some((perm) => userPermissions.includes(perm))
+ }
+
+  const mappedPermissions = {
+    editName: hasSomePermission(['user:profile:firstName:edit', 'user:profile:edit']),
+    editEmail: hasSomePermission(['user:profile:email:edit', 'user:profile:edit']),
+    viewName: hasSomePermission(['user:profile:firstName:view', 'user:profile:view', 'user:profile:edit', 'user:profile:firstName:edit']),
+    viewEmail: hasSomePermission(['user:profile:email:view', 'user:profile:view', 'user:profile:edit', 'user:profile:email:edit'])
+  }
 
   return (
     <div>
       <form>
         <InputForm 
           label="Name"
-          value={ firstName }
-          onChange={newValue => setFirstName(newValue)}
+          canEdit={mappedPermissions.editName}
+          canView={mappedPermissions.viewName}
+          value={ user.firstName }
+          onChange={newValue => setUser({...user, firstName: newValue})}
         />
 
         <InputForm 
           label="Email"
-          value={ email }
-          onChange={newValue => setEmail(newValue)}
+          canView={mappedPermissions.viewEmail}
+          canEdit={mappedPermissions.editEmail}
+          value={ user.email }
+          onChange={newValue => setUser({...user, email: newValue})}
         />
 
         <Button type="button" onClick={handleContinue}>

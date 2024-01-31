@@ -1,12 +1,6 @@
 import { createContext, useState } from "react"
 import { IUser } from "../services/api/user/UserService"
 
-const defaultValue: IUser = {
-  id: 0, 
-  firstName: '',
-  email: ''
-}
-
 interface IUserIdProviderProps {
   children: React.ReactNode
 }

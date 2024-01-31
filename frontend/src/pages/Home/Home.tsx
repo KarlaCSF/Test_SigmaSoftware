@@ -17,7 +17,7 @@ export const Home = () => {
         setUsersList(result)
       }
     })
-  })
+  }, [])
 
   return (
     <div>
