@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { InputForm } from "./components/InputForm"
-import { ButtonForm } from "./components/ButtonForm"
-import { UserService, User } from "../../services/api/user/UserService"
-import { ApiException } from "../../services/api/ApiException"
+import { Button } from "../shared/components/Button"
+import { UserService } from "../shared/services/api/user/UserService"
+import { ApiException } from "../shared/services/api/ApiException"
+import { UserContext } from "../shared/contexts/UserContext"
 
 export const Form = () => {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
-  
+
+  const { userId } = useContext(UserContext)
+
   useEffect(() => {
-    UserService.getById(1)
+    UserService.getById(userId)
     .then((result) => {
       if (result instanceof ApiException) {
         alert(result.message)
@@ -18,10 +21,10 @@ export const Form = () => {
         setEmail(result.email)
       }
     })
-  }, [])
+  }, [userId])
   
   const handleContinue = () => {
-    UserService.updateById(1, { firstName, email })
+    UserService.updateById(userId, { firstName, email })
     .then((result) => {
       if (result instanceof ApiException) {
         alert(result.message)
@@ -46,9 +49,9 @@ export const Form = () => {
           onChange={newValue => setEmail(newValue)}
         />
 
-        <ButtonForm type="button" onClick={handleContinue}>
+        <Button type="button" onClick={handleContinue}>
           Continue         
-        </ButtonForm>
+        </Button>
       </form>
     </div>
   )

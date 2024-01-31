@@ -4,7 +4,7 @@ export interface ButtonFormProps {
   children: React.ReactNode
 }
 
-export const ButtonForm: React.FC<ButtonFormProps> = (props) => {
+export const Button: React.FC<ButtonFormProps> = (props) => {
   return (
     <button {...props}>
       { props.children }

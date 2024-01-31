@@ -1,20 +1,37 @@
-import { useEffect } from "react";
-import { UserService } from "../../services/api/user/UserService";
-import { ApiException } from "../../services/api/ApiException";
+import { useEffect, useState } from "react";
+import { IUser, UserService } from "../shared/services/api/user/UserService";
+import { ApiException } from "../shared/services/api/ApiException";
 import { useNavigate } from "react-router-dom";
+import { UserHome } from "./components/UserHome";
 
 
 export const Home = () => {
-  const navigate = useNavigate()
+  const [usersList, setUsersList] = useState<IUser[]>([])
 
-  const handleClick = () => {
-    navigate('/form')
-  }
+  useEffect (() => {
+    UserService.getAll()
+    .then((result) => {
+      if (result instanceof ApiException)
+        alert(result.message)
+      else {
+        setUsersList(result)
+      }
+    })
+  })
 
   return (
     <div>
-      <p>Home</p>
-      <button onClick={handleClick}>Continue</button>
+      <p>Users</p>
+      <div>
+        {usersList?.length && usersList.map((listItem) => {
+          return (
+            <UserHome 
+              firstName={listItem.firstName} 
+              id={listItem.id}/>
+          )
+        })}
+      </div>
+      
     </div>
   )
 };

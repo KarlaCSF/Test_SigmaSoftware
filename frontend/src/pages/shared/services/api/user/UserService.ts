@@ -1,15 +1,15 @@
 import { ApiException } from "../ApiException";
 import { Api } from "../ApiConfig";
 
-export interface User {
+export interface IUser {
   id: number;
   firstName: string;
   email: string;
 }
 
 const create = async (
-  dataToCreate: Omit<User, "id">,
-): Promise<User | ApiException> => {
+  dataToCreate: Omit<IUser, "id">,
+): Promise<IUser | ApiException> => {
   try {
     const { data } = await Api().post("/user", dataToCreate);
     return data;
@@ -27,7 +27,7 @@ const getAll = async () => {
   }
 }
 
-const getById = async (id: number): Promise<User | ApiException> => {
+const getById = async (id: number): Promise<IUser | ApiException> => {
   try {
     const { data } = await Api().get(`/user/${id}`);
     return data;
@@ -38,8 +38,8 @@ const getById = async (id: number): Promise<User | ApiException> => {
 
 const updateById = async (
   id: number,
-  dataToUpdate: Partial<User>,
-): Promise<User | ApiException> => {
+  dataToUpdate: Partial<IUser>,
+): Promise<IUser | ApiException> => {
   try {
     const { data } = await Api().put(`/user/${id}`, {user: dataToUpdate } );
     return data;
@@ -50,6 +50,7 @@ const updateById = async (
 
 export const UserService = {
   create,
+  getAll,
   getById,
   updateById,
 };
