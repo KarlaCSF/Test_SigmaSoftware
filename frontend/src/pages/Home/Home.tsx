@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { IUser, UserService } from "../shared/services/api/user/UserService";
 import { ApiException } from "../shared/services/api/ApiException";
-import { useNavigate } from "react-router-dom";
 import { UserHome } from "./components/UserHome";
-
 
 export const Home = () => {
   const [usersList, setUsersList] = useState<IUser[]>([])
@@ -20,8 +18,8 @@ export const Home = () => {
   }, [])
 
   return (
-    <div>
-      <p>Users</p>
+    <div className="Users">
+      <h1>Users</h1>
       <div>
         {usersList?.length && usersList.map((listItem) => {
           return (

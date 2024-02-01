@@ -9,13 +9,15 @@ export interface InputFormProps {
 
 export const InputForm: React.FC<InputFormProps> = (props) => {
   return (
-    <label>
-      <span>{props.label}</span>
-      <input 
-        disabled={!props.canEdit}
-        value={props.value}
-        type={props.canView ? "text" : "password"} 
-        onChange={e => props.onChange(e.target.value)}/>
-    </label>
+    <div className="FormItem">
+      <label>
+        <span>{props.label}</span>
+        <input 
+          disabled={!props.canEdit}
+          value={props.value}
+          type={props.canView ? "text" : "password"} 
+          onChange={e => props.onChange(e.target.value)}/>
+      </label>
+    </div>
   )
 }

@@ -15,13 +15,14 @@ export const UserHome: React.FC<Partial<IUser>> = (props) => {
   }
   
   return (
-    <div>
-      <span>{props.firstName}</span>
+    <div className="UserItem">
+      <span className="UserName">{props.firstName}</span>
 
-      <Button type="button" onClick={handleClick}>
-        See profile
-      </Button>
-
+      <div >
+        <Button type="button" onClick={handleClick}>
+          See profile
+        </Button>
+      </div>
     </div>
   )
 }

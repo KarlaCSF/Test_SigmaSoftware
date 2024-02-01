@@ -53,28 +53,30 @@ export const Form = () => {
   }
 
   return (
-    <div>
-      <form>
-        <InputForm 
-          label="Name"
-          canEdit={mappedPermissions.editName}
-          canView={mappedPermissions.viewName}
-          value={ user.firstName }
-          onChange={newValue => setUser({...user, firstName: newValue})}
-        />
+    <div className="container">
+      <div className="Form">
+        <form>
+          <InputForm 
+            label="Name"
+            canEdit={mappedPermissions.editName}
+            canView={mappedPermissions.viewName}
+            value={ user.firstName }
+            onChange={newValue => setUser({...user, firstName: newValue})}
+          />
 
-        <InputForm 
-          label="Email"
-          canView={mappedPermissions.viewEmail}
-          canEdit={mappedPermissions.editEmail}
-          value={ user.email }
-          onChange={newValue => setUser({...user, email: newValue})}
-        />
+          <InputForm 
+            label="Email"
+            canView={mappedPermissions.viewEmail}
+            canEdit={mappedPermissions.editEmail}
+            value={ user.email }
+            onChange={newValue => setUser({...user, email: newValue})}
+          />
 
-        <Button type="button" onClick={handleContinue}>
-          Continue         
-        </Button>
-      </form>
+          <Button type="button" onClick={handleContinue}>
+            Submit         
+          </Button>
+        </form>
+      </div>
     </div>
   )
 }

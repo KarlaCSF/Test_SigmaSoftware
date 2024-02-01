@@ -10,6 +10,80 @@ body {
   padding: 2rem;
 }
 
-p {
+.Users {
+  background-color: #d7d5d5;
+  border-radius: 15px;
+  max-width: 700px;
+  margin: auto;
   text-align: center;
+  padding: 70px 10px;
+  font-size: 26px;
+  margin-top: 3%;
+}
+
+.UserItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6d0007;
+  color: white;
+  border-radius: 10px;
+  padding: 35px 70px;
+  margin: 30px 90px;
+}
+
+.UserName {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: start;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer; 
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.Form {
+  display: flex;
+  background-color: #d7d5d5;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 7%;
+  border-radius: 15px;
+  text-align: center;
+  justify-content: center;
+  padding: 100px;
+  align-content: space-between;
+}
+
+.FormItem {
+  display: block;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+
+.FormItem span {
+  display: block;
+  text-align: left;
+  padding: 5px 0;
+  font-size: 18px;
+}
+
+.FormItem input {
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #6d0007;
+}
+
+.Form button {
+  margin-top: 15px;
+  background-color: #6d0007;
+  color: white;
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 80px;
+  width: 50%;
 }
