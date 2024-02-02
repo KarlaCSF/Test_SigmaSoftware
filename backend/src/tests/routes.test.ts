@@ -12,6 +12,7 @@ describe('Test User Crud', () => {
   let user: User & { permissions: string[] }
   beforeEach(() => {
     response = { send: (e: any) => e } as unknown as Response
+
     user = {
       id: 1,
       firstName: 'John',
