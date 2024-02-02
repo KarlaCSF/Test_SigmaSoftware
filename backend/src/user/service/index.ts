@@ -1,4 +1,4 @@
-import prismaClient from '../../script'
+import prismaClient from '../../client'
 import { type User } from '@prisma/client'
 
 class UserService {

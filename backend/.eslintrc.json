@@ -11,5 +11,13 @@
     "rules": {
         "@typescript-eslint/no-extraneous-class": "off",
         "@typescript-eslint/no-misused-promises": "off"
-    }
+    },
+    "overrides": [
+        {
+        "files": ["tests/**/*"],
+        "env": {
+            "jest": true
+        }
+        }
+    ]
 }

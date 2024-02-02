@@ -1,4 +1,4 @@
-import prismaClient from '../../script'
+import prismaClient from '../../client'
 import { type Permission } from '@prisma/client'
 
 class PermissionService {
