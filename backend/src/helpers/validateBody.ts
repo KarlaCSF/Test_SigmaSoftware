@@ -8,7 +8,7 @@ function validateEmail (email: string): boolean {
 export function validateCreateBody (body: { user: User, permissions: string[] }): void {
   const { user, permissions }: { user: User, permissions: string[] } = body
 
-  if (user?.firstName.length < 2) throw Error('Invalid firstName.')
+  if (user?.firstName.length < 2) throw Error('Name must have 2 or more characters.')
 
   const isEmailValid = validateEmail(user?.email)
   if (!isEmailValid) { throw new Error('Invalid email.') }
@@ -24,7 +24,7 @@ export function validateEditBody (body: { user: User, permissions: string[] }): 
   const { user, permissions }: { user: User, permissions: string[] } = body
 
   if (user?.firstName !== undefined) {
-    if (user?.firstName.length < 2) throw Error('Invalid firstName.')
+    if (user?.firstName.length < 2) throw Error('Name must have 2 or more characters.')
   }
 
   if (user?.email !== undefined) {

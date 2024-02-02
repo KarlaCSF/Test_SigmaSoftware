@@ -58,7 +58,7 @@ describe('Test User Crud', () => {
 
       const request = { body: { user } } as unknown as Request
 
-      await expect(createUser(request, response)).rejects.toThrow('Invalid firstName.')
+      await expect(createUser(request, response)).rejects.toThrow('Name must have 2 or more characters.')
     })
 
     test('with invalid permission', async () => {
@@ -139,7 +139,7 @@ describe('Test User Crud', () => {
 
       const request = { body: { user }, params: { id: 1 } } as unknown as Request
 
-      await expect(updateUser(request, response)).rejects.toThrow('Invalid firstName.')
+      await expect(updateUser(request, response)).rejects.toThrow('Name must have 2 or more characters.')
     })
 
     test('with invalid permission', async () => {

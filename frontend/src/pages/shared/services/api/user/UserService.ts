@@ -15,7 +15,7 @@ const create = async (
     const { data } = await Api().post("/user", dataToCreate);
     return data;
   } catch (error: any) {
-    return new ApiException(error.message || "Error consulting API");
+    return new ApiException(error.response.data || "Error consulting API");
   }
 };
 
@@ -24,7 +24,7 @@ const getAll = async () => {
     const { data } = await Api().get("/user");
     return data;
   } catch (error: any) {
-    return new ApiException(error.message || "Error consulting API");
+    return new ApiException(error.response.data || "Error consulting API");
   }
 }
 
@@ -33,7 +33,7 @@ const getById = async (id: number): Promise<IUser | ApiException> => {
     const { data } = await Api().get(`/user/${id}`);
     return data;
   } catch (error: any) {
-    return new ApiException(error.message || "Error consulting API");
+    return new ApiException(error.response.data || "Error consulting API");
   }
 };
 
@@ -45,7 +45,8 @@ const updateById = async (
     const { data } = await Api().put(`/user/${id}`, {user: dataToUpdate } );
     return data;
   } catch (error: any) {
-    return new ApiException(error.message || "Error consulting API");
+    console.log({error})
+    return new ApiException(error.response.data || "Error consulting API");
   }
 };
 
