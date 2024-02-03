@@ -24,7 +24,7 @@ chmod +x ./commands.sh
 
 ### Run frontend:
 ```
-cd backend
+cd frontend
 ```
 
 ```
