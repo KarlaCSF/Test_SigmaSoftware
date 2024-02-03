@@ -8,7 +8,7 @@ Before start, make sure you have the following requirements:
 
 ## Installing and Running
 
-Execute the following steps on command line.
+After cloning and changing to repository folder, execute the following steps on command line.
 
 ### Run backend:
 
@@ -20,9 +20,13 @@ chmod +x ./commands.sh
 ```
 
 ### Run frontend:
+
+\*On another terminal tab.
+
 ```
 cd frontend
 
+yarn install
 yarn start
 ```
 
