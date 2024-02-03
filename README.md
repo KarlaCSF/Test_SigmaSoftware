@@ -12,21 +12,21 @@ Before start, make sure you have the following requirements:
 
 ```
 cd backend
-```
 
-```
 chmod +x ./commands.sh
-```
-
-```
 ./commands.sh
 ```
 
 ### Run frontend:
 ```
 cd frontend
+
+yarn start
 ```
 
+### Run tests
 ```
-yarn start
+cd backend
+
+yarn test
 ```
