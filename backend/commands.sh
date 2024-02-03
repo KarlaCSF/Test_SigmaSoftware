@@ -1,5 +1,5 @@
 # Install yarn global
-npm install -g yarn
+sudo npm install -g yarn
 
 # Install dependencies
 yarn install
