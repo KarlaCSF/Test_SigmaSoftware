@@ -8,6 +8,8 @@ Before start, make sure you have the following requirements:
 
 ## Installing and Running
 
+Execute the following steps on command line.
+
 ### Run backend:
 
 ```
