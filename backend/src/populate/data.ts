@@ -4,7 +4,7 @@ const users: Array<{ user: Partial<User>, permissions: string[] }> = [
   {
     user: {
       firstName: 'John',
-      email: 'john1@email.com'
+      email: 'john@email.com'
     },
     permissions: [
       'user:profile:view'
@@ -13,7 +13,7 @@ const users: Array<{ user: Partial<User>, permissions: string[] }> = [
   {
     user: {
       firstName: 'Karla',
-      email: 'karla2@email.com'
+      email: 'karla@email.com'
     },
     permissions: [
       'user:profile:edit'
@@ -22,11 +22,11 @@ const users: Array<{ user: Partial<User>, permissions: string[] }> = [
   {
     user: {
       firstName: 'Daria',
-      email: 'daria3@email.com'
+      email: 'daria@email.com'
     },
     permissions: [
       'user:profile:view',
-      'user:profile:name:edit'
+      'user:profile:firstName:edit'
     ]
   }
 ]
