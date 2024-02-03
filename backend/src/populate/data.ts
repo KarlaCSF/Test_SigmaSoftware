@@ -16,7 +16,7 @@ const users: Array<{ user: Partial<User>, permissions: string[] }> = [
       email: 'karla@email.com'
     },
     permissions: [
-      'user:profile:edit'
+      'user:profile:email:edit'
     ]
   },
   {
